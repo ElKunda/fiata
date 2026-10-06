@@ -13,8 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bordeaux: #800020;
-      --bordeaux-fonce: #5C0017;
+      --bordeaux: #6C0339;
+      --bordeaux-fonce: #4A0227;
       --dore: #D4AF37;
       --dore-clair: #E0C179;
       --ivoire: #FAF9F6;
@@ -33,20 +33,20 @@
     }
   </style>
 </head>
-<body class="bg-[#FAF9F6] text-[#0D0D0D] antialiased selection:bg-[#D4AF37]/30 selection:text-[#800020]">
+<body class="bg-[#FAF9F6] text-[#0D0D0D] antialiased selection:bg-[#D4AF37]/30 selection:text-[#6C0339]">
 
   <!-- Modal d'authentification si aucun lien personnalisé n'est utilisé -->
-  <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#800020]/95 backdrop-blur-md hidden">
+  <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#6C0339]/95 backdrop-blur-md hidden">
     <div class="bg-white max-w-md w-full p-6 sm:p-8 rounded-3xl shadow-2xl border border-[#D4AF37]/40 text-center space-y-6">
       <div class="space-y-2">
-        <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#D4AF37] font-semibold bg-[#800020] px-3 py-1 rounded-full">Accès Sécurisé</span>
-        <h3 class="font-serif text-2xl sm:text-3xl text-[#800020]">Albert & Linda</h3>
+        <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#D4AF37] font-semibold bg-[#6C0339] px-3 py-1 rounded-full">Accès Sécurisé</span>
+        <h3 class="font-serif text-2xl sm:text-3xl text-[#6C0339]">Albert & Linda</h3>
         <p class="text-xs sm:text-sm text-stone-600">Veuillez entrer votre nom et prénom tels qu'indiqués sur votre invitation pour accéder au site.</p>
       </div>
       
       <form id="auth-form" class="space-y-4">
         <input type="text" id="auth-input-name" placeholder="Votre nom complet" required class="w-full border border-stone-300 p-3.5 rounded-xl text-xs sm:text-sm bg-[#FAF9F6] focus:outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 transition-all text-center">
-        <button type="submit" id="auth-submit-btn" class="w-full bg-[#800020] hover:bg-[#5C0017] text-[#D4AF37] font-semibold py-3.5 rounded-xl shadow-lg transition-all text-xs uppercase tracking-[0.2em] border border-[#D4AF37]/40 cursor-pointer">
+        <button type="submit" id="auth-submit-btn" class="w-full bg-[#6C0339] hover:bg-[#4A0227] text-[#D4AF37] font-semibold py-3.5 rounded-xl shadow-lg transition-all text-xs uppercase tracking-[0.2em] border border-[#D4AF37]/40 cursor-pointer">
           Accéder à l'invitation
         </button>
       </form>
@@ -67,21 +67,21 @@
     </div>
 
     <div class="absolute z-30 inset-0 flex flex-col items-center justify-center pointer-events-none p-4">
-      <div class="bg-[#800020]/85 border border-[#D4AF37]/60 px-6 py-3 rounded-full backdrop-blur-md shadow-2xl animate-pulse text-center">
+      <div class="bg-[#6C0339]/85 border border-[#D4AF37]/60 px-6 py-3 rounded-full backdrop-blur-md shadow-2xl animate-pulse text-center">
         <p class="font-serif text-sm sm:text-base text-[#FAF9F6] tracking-widest uppercase">Appuyer sur le cachet pour ouvrir</p>
       </div>
     </div>
   </div>
 
   <div class="fixed bottom-4 right-4 z-30 md:hidden">
-    <a href="#section-formulaire" class="bg-[#800020] text-[#D4AF37] border border-[#D4AF37]/50 font-medium px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 text-[11px] uppercase tracking-widest backdrop-blur-md active:scale-95 transition-all">
+    <a href="#section-formulaire" class="bg-[#6C0339] text-[#D4AF37] border border-[#D4AF37]/50 font-medium px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 text-[11px] uppercase tracking-widest backdrop-blur-md active:scale-95 transition-all">
       <svg class="w-4 h-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
       RSVP
     </a>
   </div>
 
-  <!-- SECTION ACQUEIL & INVITATION (SECTION ONE) -->
-  <section id="section-accueil" class="min-h-screen flex flex-col justify-center items-center text-center px-4 py-12 sm:py-16 relative overflow-hidden" style="background: radial-gradient(circle at center, #800020 0%, #5C0017 70%, #0D0D0D 100%);">
+  <!-- SECTION ACCUEIL & INVITATION (SECTION ONE) -->
+  <section id="section-accueil" class="min-h-screen flex flex-col justify-center items-center text-center px-4 py-12 sm:py-16 relative overflow-hidden" style="background: radial-gradient(circle at center, #6C0339 0%, #4A0227 70%, #0D0D0D 100%);">
     
     <div class="relative w-full max-w-[560px] sm:max-w-sm md:max-w-md aspect-[3/4] flex flex-col justify-center items-center text-center p-4 sm:p-6 mt-6">
       
@@ -95,24 +95,24 @@
       <!-- Image du Cadre / Frame -->
       <img src="Frame.jpeg" alt="Cadre" class="absolute inset-0 w-full h-full object-contain pointer-events-none z-0 filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
       
-      <!-- Contenu à l'intérieur du cadre -->
+      <!-- Contenu à l'intérieur du cadre : textes en noir sans ombre -->
       <div class="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-4/5 text-center space-y-3">
         
-        <!-- Nom de l'invité précédé par la civilité/genre (ex: Mr. / Mme) -->
+        <!-- Nom de l'invité précédé par la civilité/genre (ex: Mr. / Mme) en NOIR SANS OMBRE -->
         <div class="space-y-1">
-          <p id="guest-full-display" class="font-serif text-base sm:text-lg md:text-2xl text-[#FAF9F6] italic font-semibold tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] border-b border-[#D4AF37]/60 pb-2 inline-block max-w-full break-words">
+          <p id="guest-full-display" class="font-serif text-base sm:text-lg md:text-2xl text-[#0D0D0D] italic font-bold tracking-wide border-b border-[#D4AF37]/60 pb-2 inline-block max-w-full break-words">
             Chargement...
           </p>
         </div>
 
-        <!-- Texte du message d'invitation -->
-        <p class="text-[11px] sm:text-xs md:text-sm text-[#FAF9F6] font-light leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] pt-1 px-2">
+        <!-- Texte du message d'invitation en NOIR SANS OMBRE -->
+        <p class="text-[11px] sm:text-xs md:text-sm text-[#0D0D0D] font-medium leading-relaxed pt-1 px-2">
           Les familles Kunda et Ilosyo ont l'immense plaisir de vous convier au mariage de leurs fils et fille.
         </p>
 
         <!-- Table de l'invité -->
         <div id="guest-table-container" class="pt-2">
-          <span class="text-[10px] sm:text-xs tracking-wider text-[#FAF9F6] bg-[#800020]/90 border border-[#D4AF37]/50 px-3 py-1 rounded-full inline-block shadow-md">
+          <span class="text-[10px] sm:text-xs tracking-wider text-[#FAF9F6] bg-[#6C0339]/90 border border-[#D4AF37]/50 px-3 py-1 rounded-full inline-block shadow-md">
             Table : <span id="guest-table" class="font-semibold text-[#D4AF37]">Table générale</span>
           </span>
         </div>
@@ -122,7 +122,7 @@
 
     <!-- Bouton défiler -->
     <div class="absolute bottom-4 sm:bottom-6 z-10">
-      <a href="#section-maries" class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#D4AF37]/60 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#800020] transition-all duration-300 shadow-lg backdrop-blur-sm">
+      <a href="#section-maries" class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#D4AF37]/60 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#6C0339] transition-all duration-300 shadow-lg backdrop-blur-sm">
         ↓
       </a>
     </div>
@@ -136,7 +136,7 @@
     </div>
   </section>
 
-  <section class="py-16 sm:py-24 px-4 bg-[#800020] text-[#FAF9F6] relative overflow-hidden">
+  <section class="py-16 sm:py-24 px-4 bg-[#6C0339] text-[#FAF9F6] relative overflow-hidden">
     <div class="max-w-md mx-auto text-center space-y-8 sm:space-y-12 relative z-10">
       <div class="space-y-2 sm:space-y-3">
         <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#D4AF37] font-semibold">Rendez-vous</span>
@@ -190,11 +190,11 @@
   <section id="section-lieu" class="py-16 sm:py-24 px-4 bg-white border-b border-[#D4AF37]/20">
     <div class="max-w-3xl mx-auto text-center space-y-8 sm:space-y-10">
       <div class="space-y-2 sm:space-y-3">
-        <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#800020] font-semibold">Célébration</span>
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-[#800020]">Lieu & Itinéraire</h2>
+        <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#6C0339] font-semibold">Célébration</span>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-[#6C0339]">Lieu & Itinéraire</h2>
       </div>
       <div class="space-y-4 bg-[#FAF9F6] p-6 sm:p-8 rounded-3xl border border-[#D4AF37]/25 shadow-sm max-w-xl mx-auto">
-        <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#800020] font-normal">Wisdom's House</h3>
+        <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#6C0339] font-normal">Wisdom's House</h3>
         <p class="text-sm sm:text-base font-light text-stone-700 flex items-center justify-center gap-2">
           <svg class="w-5 h-5 text-[#D4AF37] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -209,11 +209,11 @@
         </div>
       </div>
       <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 pt-2">
-        <a href="https://maps.google.com/?q=Wisdoms+House+Mondjiba+173+Kintambo+Magasin+Kinshasa" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 bg-[#800020] text-[#D4AF37] border border-[#D4AF37]/40 text-xs font-semibold uppercase tracking-widest rounded-xl hover:bg-[#5C0017] transition-all shadow-lg flex items-center justify-center gap-2.5">
+        <a href="https://maps.google.com/?q=Wisdoms+House+Mondjiba+173+Kintambo+Magasin+Kinshasa" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 bg-[#6C0339] text-[#D4AF37] border border-[#D4AF37]/40 text-xs font-semibold uppercase tracking-widest rounded-xl hover:bg-[#4A0227] transition-all shadow-lg flex items-center justify-center gap-2.5">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           Google Maps
         </a>
-        <a href="https://waze.com/ul?q=Wisdom%27s%20House%20Mondjiba%20173%20Kintambo%20Magasin%20Kinshasa&navigate=yes" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 bg-[#FAF9F6] text-[#800020] border border-[#D4AF37]/60 text-xs font-semibold uppercase tracking-widest rounded-xl hover:bg-[#D4AF37]/10 transition-all shadow-md flex items-center justify-center gap-2.5">
+        <a href="https://waze.com/ul?q=Wisdom%27s%20House%20Mondjiba%20173%20Kintambo%20Magasin%20Kinshasa&navigate=yes" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 bg-[#FAF9F6] text-[#6C0339] border border-[#D4AF37]/60 text-xs font-semibold uppercase tracking-widest rounded-xl hover:bg-[#D4AF37]/10 transition-all shadow-md flex items-center justify-center gap-2.5">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"/></svg>
           Waze
         </a>
@@ -226,8 +226,8 @@
       <form id="wedding-form" class="space-y-8 sm:space-y-12">
         <div class="space-y-4 sm:space-y-6">
           <div class="border-b border-[#D4AF37]/30 pb-4">
-            <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#800020]">Confirmation de Présence</h3>
-            <p class="text-[10px] sm:text-xs text-[#FAF9F6] font-semibold uppercase tracking-wider mt-3 bg-[#800020] inline-block px-3 py-1.5 rounded-lg shadow-sm">
+            <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#6C0339]">Confirmation de Présence</h3>
+            <p class="text-[10px] sm:text-xs text-[#FAF9F6] font-semibold uppercase tracking-wider mt-3 bg-[#6C0339] inline-block px-3 py-1.5 rounded-lg shadow-sm">
               Réponse souhaitée avant le 15 Octobre 2026
             </p>
           </div>
@@ -235,11 +235,11 @@
             <label class="block text-xs sm:text-sm font-medium text-stone-700">Serez-vous parmi nous ?</label>
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <label class="flex items-center gap-3 border border-stone-200 p-3.5 sm:p-4 rounded-2xl flex-1 cursor-pointer hover:border-[#D4AF37] hover:bg-[#FAF9F6]/50 transition-all">
-                <input type="radio" name="presence" value="oui" required class="accent-[#800020] w-4 h-4">
+                <input type="radio" name="presence" value="oui" required class="accent-[#6C0339] w-4 h-4">
                 <span class="text-xs sm:text-sm font-medium text-stone-800">Oui, avec plaisir</span>
               </label>
               <label class="flex items-center gap-3 border border-stone-200 p-3.5 sm:p-4 rounded-2xl flex-1 cursor-pointer hover:border-[#D4AF37] hover:bg-[#FAF9F6]/50 transition-all">
-                <input type="radio" name="presence" value="non" class="accent-[#800020] w-4 h-4">
+                <input type="radio" name="presence" value="non" class="accent-[#6C0339] w-4 h-4">
                 <span class="text-xs sm:text-sm font-medium text-stone-800">Malheureusement non</span>
               </label>
             </div>
@@ -248,40 +248,40 @@
         
         <div class="space-y-6 sm:space-y-8">
           <div class="border-b border-[#D4AF37]/30 pb-4">
-            <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#800020]">Préférences de la Fête</h3>
+            <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#6C0339]">Préférences de la Fête</h3>
           </div>
           <div class="space-y-5 sm:space-y-6">
-            <h4 class="font-serif text-lg sm:text-xl text-[#800020] border-l-2 border-[#D4AF37] pl-3">Votre boisson préférée <span class="block sm:inline text-xs text-stone-400 font-sans font-normal">(Un seul choix possible)</span></h4>
+            <h4 class="font-serif text-lg sm:text-xl text-[#6C0339] border-l-2 border-[#D4AF37] pl-3">Votre boisson préférée <span class="block sm:inline text-xs text-stone-400 font-sans font-normal">(Un seul choix possible)</span></h4>
             <div class="space-y-2.5 sm:space-y-3">
               <label class="block text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-stone-400">Boissons Alcoolisées</label>
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs sm:text-sm text-stone-700">
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Castel" class="accent-[#800020]"> Castel</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Nkoyi" class="accent-[#800020]"> Nkoyi</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Beaufort" class="accent-[#800020]"> Beaufort</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Likofi" class="accent-[#800020]"> Likofi</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Heineken" class="accent-[#800020]"> Heineken</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Turbo" class="accent-[#800020]"> Turbo</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Tembo" class="accent-[#800020]"> Tembo</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="33 Export" class="accent-[#800020]"> 33 Export</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Legend" class="accent-[#800020]"> Legend</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Primus" class="accent-[#800020]"> Primus</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Castel" class="accent-[#6C0339]"> Castel</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Nkoyi" class="accent-[#6C0339]"> Nkoyi</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Beaufort" class="accent-[#6C0339]"> Beaufort</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Likofi" class="accent-[#6C0339]"> Likofi</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Heineken" class="accent-[#6C0339]"> Heineken</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Turbo" class="accent-[#6C0339]"> Turbo</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Tembo" class="accent-[#6C0339]"> Tembo</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="33 Export" class="accent-[#6C0339]"> 33 Export</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Legend" class="accent-[#6C0339]"> Legend</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Primus" class="accent-[#6C0339]"> Primus</label>
               </div>
             </div>
             <div class="space-y-2.5 sm:space-y-3 pt-2">
               <label class="block text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-stone-400">Boissons Sucrées / Softs</label>
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs sm:text-sm text-stone-700">
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Coca-Cola" class="accent-[#800020]"> Coca-Cola</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Fanta" class="accent-[#800020]"> Fanta</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Maltina" class="accent-[#800020]"> Maltina</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Vitalo" class="accent-[#800020]"> Vitalo</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Sprite" class="accent-[#800020]"> Sprite</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Energy" class="accent-[#800020]"> Energy</label>
-                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Top" class="accent-[#800020]"> Top</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Coca-Cola" class="accent-[#6C0339]"> Coca-Cola</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Fanta" class="accent-[#6C0339]"> Fanta</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Maltina" class="accent-[#6C0339]"> Maltina</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Vitalo" class="accent-[#6C0339]"> Vitalo</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Sprite" class="accent-[#6C0339]"> Sprite</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Energy" class="accent-[#6C0339]"> Energy</label>
+                <label class="flex items-center gap-2 bg-[#FAF9F6] p-2.5 sm:p-3 rounded-xl hover:bg-[#D4AF37]/10 border border-stone-100 transition-colors cursor-pointer"><input type="radio" name="boisson" value="Top" class="accent-[#6C0339]"> Top</label>
               </div>
             </div>
           </div>
           <div class="space-y-3 sm:space-y-4 pt-2 sm:pt-4">
-            <h4 class="font-serif text-lg sm:text-xl text-[#800020] border-l-2 border-[#D4AF37] pl-3">Vos morceaux préférés</h4>
+            <h4 class="font-serif text-lg sm:text-xl text-[#6C0339] border-l-2 border-[#D4AF37] pl-3">Vos morceaux préférés</h4>
             <p class="text-xs text-stone-500">Proposez 3 chansons que vous aimeriez écouter durant la soirée :</p>
             <div class="space-y-2.5 sm:space-y-3">
               <input type="text" id="chanson-1" placeholder="Chanson 1 (Titre - Artiste)" class="w-full border border-stone-200 p-3 sm:p-3.5 rounded-xl text-xs sm:text-sm bg-[#FAF9F6] focus:outline-none focus:border-[#D4AF37] focus:bg-white focus:ring-2 focus:ring-[#D4AF37]/20 transition-all">
@@ -292,22 +292,22 @@
         </div>
         <div class="space-y-4">
           <div class="border-b border-[#D4AF37]/30 pb-4">
-            <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#800020]">Mot pour les Mariés</h3>
+            <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#6C0339]">Mot pour les Mariés</h3>
           </div>
           <div>
             <label class="block text-xs sm:text-sm font-medium text-stone-700 mb-2">Votre message</label>
             <textarea id="message-maries" rows="4" placeholder="Écrivez un petit mot doux pour Albert et Linda..." class="w-full border border-stone-200 p-3.5 sm:p-4 rounded-xl text-xs sm:text-sm bg-[#FAF9F6] focus:outline-none focus:border-[#D4AF37] focus:bg-white focus:ring-2 focus:ring-[#D4AF37]/20 transition-all"></textarea>
           </div>
         </div>
-        <button type="submit" id="submit-rsvp-btn" class="w-full bg-[#800020] hover:bg-[#5C0017] text-[#D4AF37] font-semibold py-4 rounded-xl shadow-xl transition-all text-xs uppercase tracking-[0.2em] border border-[#D4AF37]/40 cursor-pointer">
+        <button type="submit" id="submit-rsvp-btn" class="w-full bg-[#6C0339] hover:bg-[#4A0227] text-[#D4AF37] font-semibold py-4 rounded-xl shadow-xl transition-all text-xs uppercase tracking-[0.2em] border border-[#D4AF37]/40 cursor-pointer">
           Envoyer la réponse
         </button>
       </form>
     </div>
   </section>
 
-  <!-- SECTION INFOS (SECTION CADEAUX SUPPRIMÉE) -->
-  <section id="section-infos" class="py-16 sm:py-24 px-4 bg-[#800020] text-[#FAF9F6] border-t border-[#D4AF37]/20 relative overflow-hidden">
+  <!-- SECTION INFOS -->
+  <section id="section-infos" class="py-16 sm:py-24 px-4 bg-[#6C0339] text-[#FAF9F6] border-t border-[#D4AF37]/20 relative overflow-hidden">
     <div class="max-w-2xl mx-auto text-center space-y-12 relative z-10">
       <div class="space-y-4 bg-[#0D0D0D]/60 p-6 sm:p-8 rounded-3xl border border-[#D4AF37]/20 shadow-xl backdrop-blur-sm">
         <div class="w-12 h-12 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/40 flex items-center justify-center mx-auto text-[#D4AF37]">
@@ -366,7 +366,6 @@
           const guest = data[0];
           currentGuestId = guest.id;
           
-          // Utilisation du champ 'genre' (ex: Mr. ou Mme) s'il existe dans la BDD, sinon vide
           const civilite = guest.genre || guest.civilite || '';
           const fullDisplayName = civilite ? `${civilite} ${guest.nom_complet}` : guest.nom_complet;
           
@@ -526,10 +525,10 @@
           if (formContainer) {
             formContainer.innerHTML = `
               <div class="text-center py-8 sm:py-12 space-y-4 sm:space-y-6">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 bg-[#800020] text-[#D4AF37] rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl shadow-xl border border-[#D4AF37]/40">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 bg-[#6C0339] text-[#D4AF37] rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl shadow-xl border border-[#D4AF37]/40">
                   ✓
                 </div>
-                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#800020]">Merci infiniment !</h3>
+                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#6C0339]">Merci infiniment !</h3>
                 <p class="text-stone-600 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
                   Vos choix et votre message ont bien été enregistrés dans votre invitation. Albert & Linda se réjouissent de partager ce moment unique avec vous.
                 </p>
