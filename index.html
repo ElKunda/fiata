@@ -8,9 +8,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
+  <!-- Polices Google : Cormorant Garamond, Plus Jakarta Sans, et Cinzel Decorative (Style Royal) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --bordeaux: #6C0339;
@@ -23,6 +25,9 @@
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--ivoire); color: var(--noir); touch-action: manipulation; }
     .font-serif { font-family: 'Cormorant Garamond', serif; }
     
+    /* Police de style Royal pour Invitation */
+    .font-royal { font-family: 'Cinzel Decorative', serif; }
+
     #gates-overlay {
       transition: opacity 1.2s ease-in-out;
       will-change: opacity;
@@ -31,6 +36,33 @@
       transition: transform 3.0s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: transform;
     }
+
+    /* Animation de pulsation / rebond pour le cachet temp.png */
+    @keyframes pulseScale {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.12);
+      }
+    }
+    .animate-cachet {
+      animation: pulseScale 1.8s infinite ease-in-out;
+    }
+
+    /* Animation de rebond pour la flèche "Cliquer ici" */
+    @keyframes bounceArrow {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+    .animate-bounce-arrow {
+      animation: bounceArrow 1.2s infinite ease-in-out;
+    }
+
     /* Masquer la barre de défilement pour le carrousel */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
@@ -62,22 +94,36 @@
     </div>
   </div>
 
-  <!-- Overlay de l'enveloppe -->
-  <div id="gates-overlay" class="fixed inset-0 z-40 flex items-center justify-center overflow-hidden bg-white cursor-pointer" onclick="openEnvelope()">
+  <!-- OVERLAY ENVELOPPE AVEC CACHET TEMPT.PNG ANIME ET DECLENCHEUR AU CLIC -->
+  <div id="gates-overlay" class="fixed inset-0 z-40 flex items-center justify-center overflow-hidden bg-white">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#fffdf4_35%,_#fcf3cc_70%,_#ebd492_100%)] z-0"></div>
     
+    <!-- Volet gauche de l'enveloppe -->
     <div id="left-envelope" class="envelope-panel absolute inset-0 w-full h-full z-10 overflow-hidden drop-shadow-2xl">
       <img src="lk.png" alt="Partie lk" class="w-full h-full object-cover object-right">
     </div>
     
+    <!-- Volet droit de l'enveloppe -->
     <div id="right-envelope" class="envelope-panel absolute inset-0 w-full h-full z-20 overflow-hidden">
       <img src="ly.png" alt="Partie ly" class="w-full h-full object-cover object-right">
     </div>
 
-    <div class="absolute z-30 inset-0 flex flex-col items-center justify-center pointer-events-none p-4">
-      <div class="bg-[#6C0339]/85 border border-[#D4AF37]/60 px-6 py-3 rounded-full backdrop-blur-md shadow-2xl animate-pulse text-center">
-        <p class="font-serif text-sm sm:text-base text-[#FAF9F6] tracking-widest uppercase">Appuyer sur le cachet pour ouvrir</p>
+    <!-- CACHET ANIME & FLÈCHE AU CENTRE -->
+    <div id="cachet-container" class="absolute z-30 inset-0 flex flex-col items-center justify-center p-4">
+      
+      <!-- Flèche et texte "Cliquer ici" qui rebondit -->
+      <div class="animate-bounce-arrow flex flex-col items-center mb-2 pointer-events-none">
+        <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37] bg-[#6C0339]/90 border border-[#D4AF37]/60 px-3 py-1 rounded-full shadow-lg backdrop-blur-md">
+          Cliquer ici
+        </span>
+        <svg class="w-5 h-5 text-[#D4AF37] mt-1 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+        </svg>
       </div>
+
+      <!-- Image du Cachet temp.png avec animation de pulsation / rebond au clic -->
+      <img src="temp.png" alt="Cachet de cire" onclick="openEnvelope()" class="w-24 sm:w-32 md:w-36 h-auto cursor-pointer animate-cachet filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] active:scale-90 transition-transform duration-150 select-none">
+    
     </div>
   </div>
 
@@ -93,9 +139,9 @@
     
     <div class="relative w-full max-w-[560px] sm:max-w-sm md:max-w-md aspect-[3/4] flex flex-col justify-center items-center text-center p-4 sm:p-6 mt-6">
       
-      <!-- Titre INVITATION en police Cormorant Garamond / Serif -->
+      <!-- Titre INVITATION avec Police Royale Cinzel Decorative -->
       <div class="absolute -top-10 sm:-top-12 left-1/2 -translate-x-1/2 z-20 w-full text-center">
-        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-[#D4AF37] font-bold tracking-widest uppercase drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+        <h1 class="font-royal text-2xl sm:text-3xl md:text-4xl text-[#D4AF37] font-bold tracking-[0.15em] uppercase drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
           <u>INVITATION</u>
         </h1>
       </div>
@@ -103,17 +149,17 @@
       <!-- Image du Cadre / Frame -->
       <img src="Frame.jpeg" alt="Cadre" class="absolute inset-0 w-full h-full object-contain pointer-events-none z-0 filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
       
-      <!-- Contenu à l'intérieur du cadre : textes en noir sans ombre -->
+      <!-- Contenu à l'intérieur du cadre -->
       <div class="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-4/5 text-center space-y-3">
         
-        <!-- Nom de l'invité précédé par la civilité en NOIR SANS OMBRE -->
+        <!-- Nom de l'invité -->
         <div class="space-y-1">
           <p id="guest-full-display" class="font-serif text-base sm:text-lg md:text-2xl text-[#0D0D0D] italic font-bold tracking-wide border-b border-[#D4AF37]/60 pb-2 inline-block max-w-full break-words">
             Chargement...
           </p>
         </div>
 
-        <!-- Texte du message d'invitation en NOIR SANS OMBRE -->
+        <!-- Texte du message d'invitation -->
         <p class="text-[11px] sm:text-xs md:text-sm text-[#0D0D0D] font-medium leading-relaxed pt-1 px-2">
           Les familles Kunda et Ilosyo ont l'immense plaisir de vous convier au mariage de leurs fils et fille.
         </p>
@@ -143,62 +189,51 @@
       <!-- Conteneur principal du Carrousel -->
       <div class="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-white ring-1 ring-[#D4AF37]/30 bg-[#0D0D0D] group">
         
-        <!-- Pistes d'images coulissantes (Scroll snap horizontal) -->
+        <!-- Pistes d'images coulissantes -->
         <div id="carousel-slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth w-full">
-          <!-- Image 1 (Principale) -->
           <div class="snap-center shrink-0 w-full flex items-center justify-center">
             <img src="AL.png" alt="Albert & Linda - Image principale" class="w-full h-auto object-contain max-h-[80vh]">
           </div>
-          <!-- Image 2 -->
           <div class="snap-center shrink-0 w-full flex items-center justify-center">
             <img src="img1.png" alt="Albert & Linda - Photo 1" class="w-full h-auto object-contain max-h-[80vh]">
           </div>
-          <!-- Image 3 -->
           <div class="snap-center shrink-0 w-full flex items-center justify-center">
             <img src="img2.png" alt="Albert & Linda - Photo 2" class="w-full h-auto object-contain max-h-[80vh]">
           </div>
-          <!-- Image 4 -->
           <div class="snap-center shrink-0 w-full flex items-center justify-center">
             <img src="img3.png" alt="Albert & Linda - Photo 3" class="w-full h-auto object-contain max-h-[80vh]">
           </div>
-          <!-- Image 5 -->
           <div class="snap-center shrink-0 w-full flex items-center justify-center">
             <img src="img4.png" alt="Albert & Linda - Photo 4" class="w-full h-auto object-contain max-h-[80vh]">
           </div>
-          <!-- Image 6 -->
           <div class="snap-center shrink-0 w-full flex items-center justify-center">
             <img src="img5.png" alt="Albert & Linda - Photo 5" class="w-full h-auto object-contain max-h-[80vh]">
           </div>
-          <!-- Image 7 -->
           <div class="snap-center shrink-0 w-full flex items-center justify-center">
             <img src="img6.png" alt="Albert & Linda - Photo 6" class="w-full h-auto object-contain max-h-[80vh]">
           </div>
-          <!-- Image 8 -->
           <div class="snap-center shrink-0 w-full flex items-center justify-center">
             <img src="img7.png" alt="Albert & Linda - Photo 7" class="w-full h-auto object-contain max-h-[80vh]">
           </div>
-          <!-- Image 9 -->
           <div class="snap-center shrink-0 w-full flex items-center justify-center">
             <img src="img8.png" alt="Albert & Linda - Photo 8" class="w-full h-auto object-contain max-h-[80vh]">
           </div>
-          <!-- Image 10 -->
           <div class="snap-center shrink-0 w-full flex items-center justify-center">
             <img src="img9.png" alt="Albert & Linda - Photo 9" class="w-full h-auto object-contain max-h-[80vh]">
           </div>
         </div>
 
-        <!-- Bouton Navigation Gauche -->
+        <!-- Boutons Navigation -->
         <button onclick="slideCarousel(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 bg-[#0D0D0D]/60 hover:bg-[#6C0339] text-[#D4AF37] border border-[#D4AF37]/40 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300 shadow-lg z-10">
           ❮
         </button>
-        <!-- Bouton Navigation Droite -->
         <button onclick="slideCarousel(1)" class="absolute right-3 top-1/2 -translate-y-1/2 bg-[#0D0D0D]/60 hover:bg-[#6C0339] text-[#D4AF37] border border-[#D4AF37]/40 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300 shadow-lg z-10">
           ❯
         </button>
 
       </div>
 
-      <!-- Indicateurs de carrousel (10 points) -->
+      <!-- Indicateurs de carrousel -->
       <div class="flex justify-center items-center gap-1.5 pt-2" id="carousel-dots">
         <span class="w-2.5 h-2.5 rounded-full bg-[#6C0339] transition-all duration-300"></span>
         <span class="w-2 h-2 rounded-full bg-[#D4AF37]/40 transition-all duration-300"></span>
@@ -215,6 +250,7 @@
     </div>
   </section>
 
+  <!-- SECTION DATE & CALENDRIER -->
   <section class="py-16 sm:py-24 px-4 bg-[#6C0339] text-[#FAF9F6] relative overflow-hidden">
     <div class="max-w-md mx-auto text-center space-y-8 sm:space-y-12 relative z-10">
       <div class="space-y-2 sm:space-y-3">
@@ -266,6 +302,7 @@
     </div>
   </section>
 
+  <!-- SECTION LIEU -->
   <section id="section-lieu" class="py-16 sm:py-24 px-4 bg-white border-b border-[#D4AF37]/20">
     <div class="max-w-3xl mx-auto text-center space-y-8 sm:space-y-10">
       <div class="space-y-2 sm:space-y-3">
@@ -300,6 +337,7 @@
     </div>
   </section>
 
+  <!-- SECTION RSVP / FORMULAIRE -->
   <section id="section-formulaire" class="py-16 sm:py-24 px-4 bg-[#FAF9F6]">
     <div class="max-w-2xl mx-auto bg-white p-5 sm:p-8 md:p-14 rounded-3xl shadow-2xl border border-[#D4AF37]/30 space-y-8 sm:space-y-12">
       <form id="wedding-form" class="space-y-8 sm:space-y-12">
@@ -385,7 +423,7 @@
     </div>
   </section>
 
-  <!-- SECTION INFOS -->
+  <!-- SECTION INFOS DRESS CODE -->
   <section id="section-infos" class="py-16 sm:py-24 px-4 bg-[#6C0339] text-[#FAF9F6] border-t border-[#D4AF37]/20 relative overflow-hidden">
     <div class="max-w-2xl mx-auto text-center space-y-12 relative z-10">
       <div class="space-y-4 bg-[#0D0D0D]/60 p-6 sm:p-8 rounded-3xl border border-[#D4AF37]/20 shadow-xl backdrop-blur-sm">
@@ -418,6 +456,30 @@
     
     let currentGuestId = null;
 
+    // Fonction d'ouverture de l'enveloppe lors du clic sur le cachet
+    function openEnvelope() {
+      window.scrollTo(0, 0);
+      
+      const leftEnvelope = document.getElementById('left-envelope');
+      const rightEnvelope = document.getElementById('right-envelope');
+      const overlay = document.getElementById('gates-overlay');
+      const cachetContainer = document.getElementById('cachet-container');
+
+      if (cachetContainer) cachetContainer.style.display = 'none';
+
+      if (leftEnvelope) leftEnvelope.style.transform = 'translateX(-100%)';
+      if (rightEnvelope) rightEnvelope.style.transform = 'translateX(100%)';
+
+      if (overlay) {
+        setTimeout(() => {
+          overlay.style.opacity = '0';
+          setTimeout(() => {
+            overlay.style.display = 'none';
+          }, 1200);
+        }, 1800);
+      }
+    }
+
     // Logique du carrousel d'images
     function slideCarousel(direction) {
       const slider = document.getElementById('carousel-slider');
@@ -427,7 +489,6 @@
       }
     }
 
-    // Mise à jour des indicateurs de carrousel au défilement
     const carouselSlider = document.getElementById('carousel-slider');
     if (carouselSlider) {
       carouselSlider.addEventListener('scroll', () => {
@@ -444,7 +505,7 @@
       });
     }
 
-    // Gestion de l'authentification au chargement
+    // Chargement dynamique des invités
     window.addEventListener('DOMContentLoaded', async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const guestNameParam = urlParams.get('nom') || urlParams.get('invite') || urlParams.get('guest');
@@ -489,7 +550,6 @@
       }
     }
 
-    // Soumission du formulaire de la modale d'authentification
     document.getElementById('auth-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const inputName = document.getElementById('auth-input-name').value.trim();
@@ -536,26 +596,6 @@
       }
     });
 
-    function openEnvelope() {
-      window.scrollTo(0, 0);
-      
-      const leftEnvelope = document.getElementById('left-envelope');
-      const rightEnvelope = document.getElementById('right-envelope');
-      const overlay = document.getElementById('gates-overlay');
-
-      if (leftEnvelope) leftEnvelope.style.transform = 'translateX(-100%)';
-      if (rightEnvelope) rightEnvelope.style.transform = 'translateX(100%)';
-
-      if (overlay) {
-        setTimeout(() => {
-          overlay.style.opacity = '0';
-          setTimeout(() => {
-            overlay.style.display = 'none';
-          }, 1200);
-        }, 1800);
-      }
-    }
-
     // Compte à rebours
     const targetDate = new Date("October 17, 2026 20:00:00").getTime();
     function updateCountdown() {
@@ -572,10 +612,10 @@
         if (secondsEl) secondsEl.innerText = Math.floor((difference % (1000 * 60)) / 1000).toString().padStart(2, '0');
       }
     }
-    
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
+    // Soumission du formulaire RSVP
     document.getElementById('wedding-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       
@@ -587,34 +627,22 @@
 
       const presenceVal = document.querySelector('input[name="presence"]:checked')?.value === 'oui';
       
-      const updateData = {
-        present: presenceVal
-      };
+      const updateData = { present: presenceVal };
 
       const boissonVal = document.querySelector('input[name="boisson"]:checked')?.value;
-      if (boissonVal) {
-        updateData.boisson = boissonVal;
-      }
+      if (boissonVal) updateData.boisson = boissonVal;
 
       const chanson1Val = document.getElementById('chanson-1').value.trim();
-      if (chanson1Val) {
-        updateData.chanson_1 = chanson1Val;
-      }
+      if (chanson1Val) updateData.chanson_1 = chanson1Val;
 
       const chanson2Val = document.getElementById('chanson-2').value.trim();
-      if (chanson2Val) {
-        updateData.chanson_2 = chanson2Val;
-      }
+      if (chanson2Val) updateData.chanson_2 = chanson2Val;
 
       const chanson3Val = document.getElementById('chanson-3').value.trim();
-      if (chanson3Val) {
-        updateData.chanson_3 = chanson3Val;
-      }
+      if (chanson3Val) updateData.chanson_3 = chanson3Val;
 
       const messageVal = document.getElementById('message-maries').value.trim();
-      if (messageVal) {
-        updateData.message = messageVal;
-      }
+      if (messageVal) updateData.message = messageVal;
 
       try {
         if (currentGuestId) {
