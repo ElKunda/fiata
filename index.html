@@ -461,6 +461,12 @@
     
     let currentGuestId = null;
 
+    // Helper pour mettre la première lettre en majuscule et le reste en minuscules
+    function capitalizeFormat(str) {
+      if (!str) return '';
+      return str.trim().charAt(0).toUpperCase() + str.trim().slice(1).toLowerCase();
+    }
+
     // Fonction d'ouverture de l'enveloppe lors du clic sur le cachet
     function openEnvelope() {
       window.scrollTo(0, 0);
@@ -510,8 +516,27 @@
       });
     }
 
+    // Réinitialiser le carrousel à la toute première image au chargement/rafraîchissement
+    function resetCarouselToFirst() {
+      const slider = document.getElementById('carousel-slider');
+      if (slider) {
+        slider.scrollLeft = 0;
+      }
+      const dots = document.querySelectorAll('#carousel-dots span');
+      dots.forEach((dot, idx) => {
+        if (idx === 0) {
+          dot.className = 'w-2.5 h-2.5 rounded-full bg-[#6C0339] transition-all duration-300';
+        } else {
+          dot.className = 'w-2 h-2 rounded-full bg-[#D4AF37]/40 transition-all duration-300';
+        }
+      });
+    }
+
     // Chargement dynamique des invités
     window.addEventListener('DOMContentLoaded', async () => {
+      // Réinitialiser le carrousel sur la photo principale (a1.png / AL.png)
+      resetCarouselToFirst();
+
       const urlParams = new URLSearchParams(window.location.search);
       const guestNameParam = urlParams.get('nom') || urlParams.get('invite') || urlParams.get('guest');
 
@@ -523,11 +548,19 @@
       await loadGuestData(guestNameParam);
     });
 
+    // Assurer également le réalignement si la page est rechargée depuis le cache du navigateur
+    window.addEventListener('pageshow', () => {
+      resetCarouselToFirst();
+    });
+
     // Fonction d'affichage des détails de l'invité dans la section d'accueil
     function renderGuestUI(guest) {
       currentGuestId = guest.id;
       
-      const genreVal = guest.genre || guest.civilite || 'MONSIEUR / MADAME';
+      const rawGenre = guest.genre || guest.civilite || 'Monsieur / Madame';
+      // Application de la capitalisation (ex: "MR" -> "Mr", "MME" -> "Mme")
+      const genreVal = rawGenre.split('/').map(capitalizeFormat).join(' / ');
+      
       const nomVal = guest.nom_complet || '';
       const tableVal = guest.table_attribuee || guest.table || 'Table générale';
 
@@ -550,7 +583,7 @@
         if (data && data.length > 0) {
           renderGuestUI(data[0]);
         } else {
-          document.getElementById('guest-genre-display').textContent = "INVITÉ(E)";
+          document.getElementById('guest-genre-display').textContent = "Invité(e)";
           document.getElementById('guest-full-display').textContent = nameQuery;
           document.getElementById('guest-table').textContent = 'Table générale';
         }
@@ -558,7 +591,7 @@
         document.getElementById('auth-modal').classList.add('hidden');
       } catch (err) {
         console.error("Erreur de récupération de l'invité :", err);
-        document.getElementById('guest-genre-display').textContent = "INVITÉ(E)";
+        document.getElementById('guest-genre-display').textContent = "Invité(e)";
         document.getElementById('guest-full-display').textContent = nameQuery;
         document.getElementById('guest-table').textContent = 'Table générale';
       }
