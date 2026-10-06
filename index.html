@@ -25,7 +25,7 @@
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--ivoire); color: var(--noir); touch-action: manipulation; }
     .font-serif { font-family: 'Cormorant Garamond', serif; }
     
-    /* Police de style Royal pour Invitation */
+    /* Police de style Royal pour Invitation, Civilité et Nom */
     .font-royal { font-family: 'Cinzel Decorative', serif; }
 
     #gates-overlay {
@@ -150,11 +150,16 @@
       <img src="Frame.jpeg" alt="Cadre" class="absolute inset-0 w-full h-full object-contain pointer-events-none z-0 filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
       
       <!-- Contenu à l'intérieur du cadre -->
-      <div class="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-4/5 text-center space-y-3">
+      <div class="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-4/5 text-center space-y-2">
         
-        <!-- Nom de l'invité -->
-        <div class="space-y-1">
-          <p id="guest-full-display" class="font-serif text-base sm:text-lg md:text-2xl text-[#0D0D0D] italic font-bold tracking-wide border-b border-[#D4AF37]/60 pb-2 inline-block max-w-full break-words">
+        <!-- Designation Genre (Monsieur / Madame) au-dessus -->
+        <p id="guest-genre-display" class="font-royal text-xs sm:text-sm md:text-base text-[#6C0339] font-bold tracking-widest uppercase">
+          
+        </p>
+
+        <!-- Nom complet de l'invité en dessous (Même police Royale) -->
+        <div class="border-b border-[#D4AF37]/60 pb-2 inline-block max-w-full">
+          <p id="guest-full-display" class="font-royal text-sm sm:text-base md:text-xl text-[#0D0D0D] font-bold tracking-wider uppercase break-words">
             Chargement...
           </p>
         </div>
@@ -164,10 +169,10 @@
           Les familles Kunda et Ilosyo ont l'immense plaisir de vous convier au mariage de leurs fils et fille.
         </p>
 
-        <!-- Table de l'invité -->
+        <!-- Table attribuee directement a l'invite -->
         <div id="guest-table-container" class="pt-2">
           <span class="text-[10px] sm:text-xs tracking-wider text-[#FAF9F6] bg-[#6C0339]/90 border border-[#D4AF37]/50 px-3 py-1 rounded-full inline-block shadow-md">
-            Table : <span id="guest-table" class="font-semibold text-[#D4AF37]">Table générale</span>
+            Table : <span id="guest-table" class="font-semibold text-[#D4AF37]">Chargement...</span>
           </span>
         </div>
 
@@ -518,6 +523,20 @@
       await loadGuestData(guestNameParam);
     });
 
+    // Fonction d'affichage des détails de l'invité dans la section d'accueil
+    function renderGuestUI(guest) {
+      currentGuestId = guest.id;
+      
+      const genreVal = guest.genre || guest.civilite || 'MONSIEUR / MADAME';
+      const nomVal = guest.nom_complet || '';
+      const tableVal = guest.table_attribuee || guest.table || 'Table générale';
+
+      document.getElementById('guest-genre-display').textContent = genreVal;
+      document.getElementById('guest-full-display').textContent = nomVal;
+      document.getElementById('guest-table').textContent = tableVal;
+      document.getElementById('guest-table-container').classList.remove('hidden');
+    }
+
     async function loadGuestData(nameQuery) {
       try {
         const { data, error } = await supabaseClient
@@ -529,24 +548,19 @@
         if (error) throw error;
 
         if (data && data.length > 0) {
-          const guest = data[0];
-          currentGuestId = guest.id;
-          
-          const civilite = guest.genre || guest.civilite || '';
-          const fullDisplayName = civilite ? `${civilite} ${guest.nom_complet}` : guest.nom_complet;
-          
-          document.getElementById('guest-full-display').textContent = fullDisplayName;
-          document.getElementById('guest-table').textContent = guest.table_attribuee || 'Table générale';
-          document.getElementById('guest-table-container').classList.remove('hidden');
+          renderGuestUI(data[0]);
         } else {
-          document.getElementById('guest-full-display').textContent = nameQuery.toUpperCase();
+          document.getElementById('guest-genre-display').textContent = "INVITÉ(E)";
+          document.getElementById('guest-full-display').textContent = nameQuery;
           document.getElementById('guest-table').textContent = 'Table générale';
         }
         
         document.getElementById('auth-modal').classList.add('hidden');
       } catch (err) {
         console.error("Erreur de récupération de l'invité :", err);
-        document.getElementById('guest-full-display').textContent = nameQuery.toUpperCase();
+        document.getElementById('guest-genre-display').textContent = "INVITÉ(E)";
+        document.getElementById('guest-full-display').textContent = nameQuery;
+        document.getElementById('guest-table').textContent = 'Table générale';
       }
     }
 
@@ -572,16 +586,7 @@
         if (error) throw error;
 
         if (data && data.length > 0) {
-          const guest = data[0];
-          currentGuestId = guest.id;
-          
-          const civilite = guest.genre || guest.civilite || '';
-          const fullDisplayName = civilite ? `${civilite} ${guest.nom_complet}` : guest.nom_complet;
-          
-          document.getElementById('guest-full-display').textContent = fullDisplayName;
-          document.getElementById('guest-table').textContent = guest.table_attribuee || 'Table générale';
-          document.getElementById('guest-table-container').classList.remove('hidden');
-          
+          renderGuestUI(data[0]);
           document.getElementById('auth-modal').classList.add('hidden');
         } else {
           errorEl.classList.remove('hidden');
@@ -615,7 +620,7 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Soumission du formulaire RSVP
+    // Soumission du formulaire RSVP - Mise a jour directe dans la table guest
     document.getElementById('wedding-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       
@@ -650,6 +655,7 @@
             .from('guest')
             .update(updateData)
             .eq('id', currentGuestId);
+            
           if (error) throw error;
         }
 
@@ -663,14 +669,14 @@
                 </div>
                 <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#6C0339]">Merci infiniment !</h3>
                 <p class="text-stone-600 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
-                  Vos choix et votre message ont bien été enregistrés dans votre invitation. Albert & Linda se réjouissent de partager ce moment unique avec vous.
+                  Vos choix et votre message ont bien été enregistrés directement dans votre fiche d'invitation. Albert & Linda se réjouissent de partager ce moment unique avec vous.
                 </p>
               </div>
             `;
           }
         }, 800);
       } catch (err) {
-        console.error("Erreur lors de l'enregistrement RSVP :", err);
+        console.error("Erreur lors de l'enregistrement RSVP dans guest :", err);
         alert("Une erreur est survenue lors de l'envoi de votre réponse. Veuillez réessayer.");
         if (submitBtn) {
           submitBtn.textContent = "Envoyer la réponse";
