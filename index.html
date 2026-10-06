@@ -455,8 +455,8 @@
   </footer>
 
   <script>
-    const SUPABASE_URL = 'https://ioswtwteahaumpgmingq.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_faan40oD96N14XPBXfz0ow_wWfwdFoS';
+    const SUPABASE_URL = 'https://hjqwcaqksgpdrdqntcmc.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_zbwRsxGISUJMb-MFrKg5lg_onu_AK0V';
     const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     
     let currentGuestId = null;
@@ -630,54 +630,54 @@
         submitBtn.disabled = true;
       }
 
-      const presenceVal = document.querySelector('input[name="presence"]:checked')?.value === 'oui';
-      
-      const updateData = { present: presenceVal };
-
-      const boissonVal = document.querySelector('input[name="boisson"]:checked')?.value;
-      if (boissonVal) updateData.boisson = boissonVal;
-
-      const chanson1Val = document.getElementById('chanson-1').value.trim();
-      if (chanson1Val) updateData.chanson_1 = chanson1Val;
-
-      const chanson2Val = document.getElementById('chanson-2').value.trim();
-      if (chanson2Val) updateData.chanson_2 = chanson2Val;
-
-      const chanson3Val = document.getElementById('chanson-3').value.trim();
-      if (chanson3Val) updateData.chanson_3 = chanson3Val;
-
-      const messageVal = document.getElementById('message-maries').value.trim();
-      if (messageVal) updateData.message = messageVal;
-
       try {
-        if (currentGuestId) {
-          const { error } = await supabaseClient
-            .from('guest')
-            .update(updateData)
-            .eq('id', currentGuestId);
-            
-          if (error) throw error;
+        if (!currentGuestId) {
+          throw new Error("Impossible d'identifier votre fiche d'invité. Veuillez entrer votre nom via le modal de vérification.");
         }
 
-        setTimeout(() => {
-          const formContainer = this.parentElement;
-          if (formContainer) {
-            formContainer.innerHTML = `
-              <div class="text-center py-8 sm:py-12 space-y-4 sm:space-y-6">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 bg-[#6C0339] text-[#D4AF37] rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl shadow-xl border border-[#D4AF37]/40">
-                  ✓
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#6C0339]">Merci infiniment !</h3>
-                <p class="text-stone-600 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
-                  Vos choix et votre message ont bien été enregistrés directement dans votre fiche d'invitation. Albert & Linda se réjouissent de partager ce moment unique avec vous.
-                </p>
+        const presenceVal = document.querySelector('input[name="presence"]:checked')?.value === 'oui';
+        
+        const updateData = { present: presenceVal };
+
+        const boissonVal = document.querySelector('input[name="boisson"]:checked')?.value;
+        if (boissonVal) updateData.boisson = boissonVal;
+
+        const chanson1Val = document.getElementById('chanson-1').value.trim();
+        if (chanson1Val) updateData.chanson_1 = chanson1Val;
+
+        const chanson2Val = document.getElementById('chanson-2').value.trim();
+        if (chanson2Val) updateData.chanson_2 = chanson2Val;
+
+        const chanson3Val = document.getElementById('chanson-3').value.trim();
+        if (chanson3Val) updateData.chanson_3 = chanson3Val;
+
+        const messageVal = document.getElementById('message-maries').value.trim();
+        if (messageVal) updateData.message = messageVal;
+
+        const { error } = await supabaseClient
+          .from('guest')
+          .update(updateData)
+          .eq('id', currentGuestId);
+            
+        if (error) throw error;
+
+        const formContainer = this.parentElement;
+        if (formContainer) {
+          formContainer.innerHTML = `
+            <div class="text-center py-8 sm:py-12 space-y-4 sm:space-y-6">
+              <div class="w-14 h-14 sm:w-16 sm:h-16 bg-[#6C0339] text-[#D4AF37] rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl shadow-xl border border-[#D4AF37]/40">
+                ✓
               </div>
-            `;
-          }
-        }, 800);
+              <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-[#6C0339]">Merci infiniment !</h3>
+              <p class="text-stone-600 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+                Vos choix et votre message ont bien été enregistrés directement dans votre fiche d'invitation. Albert & Linda se réjouissent de partager ce moment unique avec vous.
+              </p>
+            </div>
+          `;
+        }
       } catch (err) {
         console.error("Erreur lors de l'enregistrement RSVP dans guest :", err);
-        alert("Une erreur est survenue lors de l'envoi de votre réponse. Veuillez réessayer.");
+        alert(err.message || "Une erreur est survenue lors de l'envoi de votre réponse. Veuillez réessayer.");
         if (submitBtn) {
           submitBtn.textContent = "Envoyer la réponse";
           submitBtn.disabled = false;
